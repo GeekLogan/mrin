@@ -44,7 +44,9 @@ KSFilter  <- function (ks.matrix,  gene.matrix, propSD, fivebias, minRPKM, propE
   ks.matrix <- ks.matrix[!duplicated(rownames(ks.matrix)), ]
   if ( is.null(dim(gene.matrix)))
   {
-    mKS <- t(apply(ks.matrix, 1, GetmKS));
+#    mKS <- t(apply(ks.matrix, 1, GetmKS)); 
+	  ##ADD BACK TO ALLOW MULTISAMPLE
+	  mKS <- t( GetmKS( ks.matrix ) );
     return(mKS);
   }else
   {
